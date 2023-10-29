@@ -296,8 +296,8 @@ static void generate_P_state_entries(int core, int cores_per_package)
 
 static void generate_cpu_entry(const struct device *device, int cpu, int core, int cores_per_package)
 {
-	/* Generate Scope(\_SB) { Device(CPUx */
-	acpigen_write_processor_device(cpu * cores_per_package + core);
+	/* Generate Processor opcode */
+	acpigen_write_processor(cpu * cores_per_package + core, PMB0_BASE, 0x06);
 
 	/* Generate P-state tables */
 	generate_P_state_entries(cpu, cores_per_package);
@@ -308,7 +308,7 @@ static void generate_cpu_entry(const struct device *device, int cpu, int core, i
 	/* Generate T-state tables */
 	generate_T_state_entries(cpu, cores_per_package);
 
-	acpigen_write_processor_device_end();
+	acpigen_write_processor_end();
 }
 
 void generate_cpu_entries(const struct device *device)

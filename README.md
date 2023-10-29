@@ -1,3 +1,17 @@
+# coreboot for Chromebooks running macOS
+
+Fork of [MrChromebox's coreboot](https://github.com/MrChromeBox/coreboot) with several fixes for running macOS.
+
+Current fixes:
+- Fix apps crashing after a sleep/wake cycle
+- Fix the CPU core objects in ACPI
+
+Prebuilt versions can be found on [ethanaobrien's build server](https://ethanthesleepy.one/public/mac_build) and can be installed by using a modified version of MrChromebox's firmware utility script by running:
+
+`cd; curl -LJOk https://ethanthesleepy.one/macos/firmware-util.sh; chmod +x firmware-util.sh; sudo bash ./firmware-util.sh`
+
+DISCLAIMER: We are NOT responsible if your device gets bricked. By using this fork of coreboot you are assuming full responsibility on anything that goes wrong with your device.
+
 coreboot README
 ===============
 

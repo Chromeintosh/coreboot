@@ -21,16 +21,14 @@ else
 	build_targets=($@)
 fi
 
-# get git rev
-rev=$(git describe --tags --dirty)
-
 for device in "${build_targets[@]}"; do
-	filename="coreboot_edk2-${device}-mrchromebox_$(date +"%Y%m%d").rom"
+	filename="coreboot_edk2-${device}-mrchromebox_$(date +"%Y%m%d")_macos.rom"
 	rm -f ~/dev/firmware/${filename}*
 	rm -rf ./build
 	cfg_file=$(find ./configs -name "config.$device.uefi")
 	cp "$cfg_file" .config
-	echo "CONFIG_LOCALVERSION=\"${rev}\"" >> .config
+	echo "CONFIG_LOCALVERSION=\"MrChromebox-4.21.0-macOS-v1\"" >> .config
+	echo "# DISABLE_HECI1_AT_PRE_BOOT is not set" >> .config
 	make clean
 	make olddefconfig
 	make -j$(nproc)

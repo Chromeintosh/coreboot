@@ -110,7 +110,7 @@ config SKIP_CSE_RBP
 	  as designed.
 
 config DISABLE_HECI1_AT_PRE_BOOT
-	default y
+	default n
 
 config MAX_HECI_DEVICES
 	int

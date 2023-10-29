@@ -27,7 +27,7 @@ config BOARD_SIEMENS_BOXER26
 if BOARD_KONTRON_BSL6_COMMON
 
 config DISABLE_HECI1_AT_PRE_BOOT
-	default y
+	default n
 
 config MAINBOARD_DIR
 	default "kontron/bsl6"

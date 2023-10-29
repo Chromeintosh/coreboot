@@ -32,7 +32,7 @@ config BOARD_INTEL_KBLRVP11
 if BOARD_INTEL_KBLRVP_COMMON
 
 config DISABLE_HECI1_AT_PRE_BOOT
-	default y
+	default n
 
 config VBOOT
 	select VBOOT_LID_SWITCH
