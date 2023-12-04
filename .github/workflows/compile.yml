@@ -1,0 +1,38 @@
+name: Build coreboot
+
+on:
+  push:
+    branches:    
+      - '*'
+      - '*/*'
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Install Dependencies
+        run: sudo apt install -y bison build-essential curl flex git gnat imagemagick libncurses5-dev m4 nasm python-is-python3 uuid-dev zlib1g-dev libssl-dev
+        
+      - name: Setup coreboot
+        run: "make crossgcc-i386 CPUS=$(nproc)"
+
+      - name: Build coreboot
+        run: "./build-uefi.sh"
+
+      - name: Generate checksums
+        uses: jmgilman/actions-generate-checksum@v1
+        with:
+          patterns: |
+            macos/*
+
+      - name: Create Release & Make Notes & Upload Assets
+        env:
+          VERSION: 0.1
+        run: |
+          gh release create "v$VERSION" --title "Latest Version v$VERSION" --generate-notes
+          gh release upload "v$VERSION" macos/*
+          gh release upload "v$VERSION" "checksum.txt#checksum-256.txt"
