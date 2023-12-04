@@ -17,6 +17,9 @@ jobs:
       - name: Install Dependencies
         run: sudo apt install -y bison build-essential curl flex git gnat imagemagick libncurses5-dev m4 nasm python-is-python3 uuid-dev zlib1g-dev libssl-dev
         
+      - name: Install more Dependencies
+        run: sudo apt install -y binutils-mips-linux-gnu pkgconf
+        
       - name: Setup coreboot
         run: "make crossgcc-i386 CPUS=$(nproc)"
 
@@ -31,6 +34,7 @@ jobs:
 
       - name: Create Release & Make Notes & Upload Assets
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: 0.1
         run: |
           gh release create "v$VERSION" --title "Latest Version v$VERSION" --generate-notes
