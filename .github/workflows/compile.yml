@@ -21,7 +21,7 @@ jobs:
         run: "make crossgcc-i386 CPUS=$(nproc)"
 
       - name: Build coreboot
-        run: "./build-uefi.sh"
+        run: "./build-uefi.sh dragonair"
 
       - name: Generate checksums
         uses: jmgilman/actions-generate-checksum@v1
