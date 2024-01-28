@@ -4,16 +4,17 @@
 #include <acpi/acpi.h>
 #include <acpi/acpigen.h>
 #include <device/device.h>
+#include <cpu/intel/speedstep.h>
 #include "i82371eb.h"
 
 static void generate_cpu_entry(int cpu)
 {
-	acpigen_write_processor_device(cpu);
+	acpigen_write_processor(cpu, PMB0_BASE, 0x06);
 
 	/* bit 1:3 in PCNTRL reg (pmbase+0x10) */
 	acpigen_write_PTC(3, 1, DEFAULT_PMBASE + PCNTRL);
 
-	acpigen_write_processor_device_end();
+	acpigen_write_processor_end();
 }
 
 void generate_cpu_entries(const struct device *device)
