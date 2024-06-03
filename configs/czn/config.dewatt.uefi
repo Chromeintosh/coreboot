@@ -8,4 +8,3 @@ CONFIG_PSP_VERSTAGE_SIGNING_TOKEN="3rdparty/blobs/mainboard/google/guybrush/monk
 CONFIG_EC_GOOGLE_CHROMEEC_FIRMWARE_EXTERNAL=y
 CONFIG_EC_GOOGLE_CHROMEEC_FIRMWARE_FILE="3rdparty/blobs/mainboard/google/guybrush/dewatt/ec.RW.flat"
 CONFIG_RUN_FSP_GOP=y
-# CONFIG_SMMSTORE is not set

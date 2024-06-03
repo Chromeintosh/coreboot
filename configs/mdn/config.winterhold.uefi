@@ -8,4 +8,3 @@ CONFIG_MAINBOARD_SMBIOS_PRODUCT_NAME="Whiterun"
 CONFIG_PSP_VERSTAGE_FILE="3rdparty/blobs/mainboard/google/skyrim/winterhold_psp_verstage.signed.bin"
 CONFIG_PSP_VERSTAGE_SIGNING_TOKEN="3rdparty/blobs/mainboard/google/skyrim/skyrim_shiraz.stkn"
 CONFIG_RUN_FSP_GOP=y
-# CONFIG_SMMSTORE is not set
