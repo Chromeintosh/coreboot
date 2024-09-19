@@ -16,7 +16,7 @@ config BOARD_SPECIFIC_OPTIONS
 	select VPD
 
 config DISABLE_HECI1_AT_PRE_BOOT
-	default y
+	default n
 
 config CBFS_SIZE
 	default 0x00900000

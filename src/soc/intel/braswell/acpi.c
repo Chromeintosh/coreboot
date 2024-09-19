@@ -7,6 +7,7 @@
 #include <arch/smp/mpspec.h>
 #include <device/mmio.h>
 #include <console/console.h>
+#include <cpu/intel/speedstep.h>
 #include <cpu/intel/turbo.h>
 #include <cpu/x86/msr.h>
 #include <cpu/x86/smm.h>
@@ -284,10 +285,10 @@ static void generate_p_state_entries(int core)
 
 static void generate_cpu_entry(int core, int cores_per_package)
 {
-	/* Generate Scope(\_SB) { Device(CPUx */
-	acpigen_write_processor_device(core);
+	/* Generate Processor opcode */
+	acpigen_write_processor(core, PMB0_BASE, 0x06);
 
-	/* Generate  P-state tables */
+	/* Generate P-state tables */
 	generate_p_state_entries(core);
 
 	/* Generate C-state tables */
@@ -296,7 +297,7 @@ static void generate_cpu_entry(int core, int cores_per_package)
 	/* Generate T-state tables */
 	generate_t_state_entries(core, cores_per_package);
 
-	acpigen_write_processor_device_end();
+	acpigen_write_processor_end();
 }
 
 void generate_cpu_entries(const struct device *device)

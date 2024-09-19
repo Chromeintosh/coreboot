@@ -25,7 +25,7 @@ config BOARD_SPECIFIC_OPTIONS
 	select TPM_RDRESP_NEED_DELAY
 
 config DISABLE_HECI1_AT_PRE_BOOT
-	default y
+	default n
 
 config MAINBOARD_DIR
 	default "system76/kbl-u"
